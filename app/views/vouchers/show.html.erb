@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @voucher.event %>
+</p>
+
+<p>
+  <strong>Membership:</strong>
+  <%= @voucher.membership %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @voucher.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @voucher.description %>
+</p>
+
+<p>
+  <strong>Template:</strong>
+  <%= @voucher.template %>
+</p>
+
+<p>
+  <strong>Uniq:</strong>
+  <%= @voucher.uniq %>
+</p>
+
+<%= link_to 'Edit', edit_voucher_path(@voucher) %> |
+<%= link_to 'Back', vouchers_path %>

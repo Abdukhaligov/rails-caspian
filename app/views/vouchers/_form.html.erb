@@ -1,0 +1,47 @@
+<%= form_with(model: voucher, local: true) do |form| %>
+  <% if voucher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(voucher.errors.count, "error") %> prohibited this voucher from being saved:</h2>
+
+      <ul>
+      <% voucher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.collection_select :event_id, Event.order(:name),:id,:name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :membership_id %>
+    <%= form.collection_select :membership_id, Membership.order(:name),:id,:name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :voucher_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :voucher_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :template %>
+    <%= form.text_field :template, id: :voucher_template %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uniq %>
+    <%= form.check_box :uniq, id: :voucher_uniq %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

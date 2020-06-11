@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  membership: one
+  name: MyString
+  description: MyText
+  template: MyString
+  uniq: false
+
+two:
+  event: two
+  membership: two
+  name: MyString
+  description: MyText
+  template: MyString
+  uniq: false

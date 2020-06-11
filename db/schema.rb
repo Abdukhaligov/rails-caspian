@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200611142459) do
+ActiveRecord::Schema.define(version: 20200611214901) do
 
   create_table "degrees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 20200611142459) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "topic_id"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_topics_on_topic_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "reference_id"
     t.bigint "degree_id"
@@ -85,10 +94,26 @@ ActiveRecord::Schema.define(version: 20200611142459) do
     t.index ["region_id"], name: "index_users_on_region_id"
   end
 
+  create_table "vouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "event_id"
+    t.bigint "membership_id"
+    t.string "name"
+    t.text "description"
+    t.string "template"
+    t.boolean "uniq"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_vouchers_on_event_id"
+    t.index ["membership_id"], name: "index_vouchers_on_membership_id"
+  end
+
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "memberships"
   add_foreign_key "events_users", "users"
+  add_foreign_key "topics", "topics"
   add_foreign_key "users", "degrees"
   add_foreign_key "users", "references"
   add_foreign_key "users", "regions"
+  add_foreign_key "vouchers", "events"
+  add_foreign_key "vouchers", "memberships"
 end

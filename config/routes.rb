@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :topics
+  resources :vouchers
   resources :events_users
-  resources :event_users
   resources :memberships
   resources :events
   resources :regions
