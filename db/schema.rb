@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200611121552) do
+ActiveRecord::Schema.define(version: 20200611142459) do
 
   create_table "degrees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -29,10 +29,12 @@ ActiveRecord::Schema.define(version: 20200611121552) do
   end
 
   create_table "events_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "event_id"
     t.bigint "user_id"
+    t.bigint "event_id"
     t.bigint "membership_id"
-    t.integer "status", limit: 1
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_events_users_on_event_id"
     t.index ["membership_id"], name: "index_events_users_on_membership_id"
     t.index ["user_id"], name: "index_events_users_on_user_id"

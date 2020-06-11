@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.includes('degree','reference','region','events')
+    @users = User.includes('degree','reference','region','events_users','memberships','events')
   end
 
   # GET /users/1
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.includes('region','reference','degree').find(params[:id])
+      @user = User.includes('region','reference','degree','events_users','memberships','events').find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
