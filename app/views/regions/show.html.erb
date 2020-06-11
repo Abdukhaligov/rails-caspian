@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name en:</strong>
+  <%= @region.name_en %>
+</p>
+
+<p>
+  <strong>Desc en:</strong>
+  <%= @region.desc_en %>
+</p>
+
+<p>
+  <strong>Name ru:</strong>
+  <%= @region.name_ru %>
+</p>
+
+<p>
+  <strong>Desc ru:</strong>
+  <%= @region.desc_ru %>
+</p>
+
+<p>
+  <strong>Cc:</strong>
+  <%= @region.cc %>
+</p>
+
+<p>
+  <strong>Mask:</strong>
+  <%= @region.mask %>
+</p>
+
+<%= link_to 'Edit', edit_region_path(@region) %> |
+<%= link_to 'Back', regions_path %>

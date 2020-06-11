@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Events</th>
+    <th>Reference</th>
+    <th>Degree</th>
+    <th>Region</th>
+    <th>Description</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Admin</th>
+    <th>Public</th>
+    <th>Phone</th>
+    <th>Company</th>
+    <th>Position</th>
+    <th>Password</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td>
+        <% if defined?(user.events) %>
+          <% user.events.each do |event| %>
+            <p><%= event.name %></p>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= user.reference ? user.reference.name : '' %></td>
+      <td><%= user.degree ? user.degree.name : '' %></td>
+      <td><%= user.region ? user.region.name_en : '' %></td>
+      <td><%= user.description %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.admin %></td>
+      <td><%= user.public %></td>
+      <td><%= user.phone %></td>
+      <td><%= user.company %></td>
+      <td><%= user.position %></td>
+      <td><%= user.password %></td>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

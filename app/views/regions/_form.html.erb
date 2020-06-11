@@ -1,0 +1,47 @@
+<%= form_with(model: region, local: true) do |form| %>
+  <% if region.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(region.errors.count, "error") %> prohibited this region from being saved:</h2>
+
+      <ul>
+      <% region.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name_en %>
+    <%= form.text_field :name_en, id: :region_name_en %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc_en %>
+    <%= form.text_field :desc_en, id: :region_desc_en %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name_ru %>
+    <%= form.text_field :name_ru, id: :region_name_ru %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc_ru %>
+    <%= form.text_field :desc_ru, id: :region_desc_ru %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cc %>
+    <%= form.text_field :cc, id: :region_cc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mask %>
+    <%= form.text_field :mask, id: :region_mask %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

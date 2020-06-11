@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Regions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name en</th>
+      <th>Desc en</th>
+      <th>Name ru</th>
+      <th>Desc ru</th>
+      <th>Cc</th>
+      <th>Mask</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @regions.each do |region| %>
+      <tr>
+        <td><%= region.name_en %></td>
+        <td><%= region.desc_en %></td>
+        <td><%= region.name_ru %></td>
+        <td><%= region.desc_ru %></td>
+        <td><%= region.cc %></td>
+        <td><%= region.mask %></td>
+        <td><%= link_to 'Show', region %></td>
+        <td><%= link_to 'Edit', edit_region_path(region) %></td>
+        <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Region', new_region_path %>
