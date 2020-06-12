@@ -1,4 +1,5 @@
 class VouchersController < ApplicationController
+  before_action :authorized
   before_action :set_voucher, only: [:show, :edit, :update, :destroy]
 
   # GET /vouchers

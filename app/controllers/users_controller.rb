@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.includes('degree','reference','region','events_users','memberships','events')
+    @users = User.includes('degree', 'reference', 'region', 'events_users', 'memberships', 'events')
   end
 
   # GET /users/1
@@ -24,17 +25,23 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    # @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    @user = User.create(params.require(:user).permit(:username,
+                                                     :password))
+
+    session[:user_id] = @user.id
+    redirect_to '/welcome'
+
+    # respond_to do |format|
+    #   if @user.save
+    #     format.html { redirect_to @user, notice: 'User was successfully created.' }
+    #     format.json { render :show, status: :created, location: @user }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /users/1
@@ -62,13 +69,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.includes('region','reference','degree','events_users','memberships','events').find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:reference_id, :degree_id, :region_id, :description, :name, :email, :admin, :public, :phone, :company, :position, :password)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.includes('region', 'reference', 'degree', 'events_users', 'memberships', 'events').find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:reference_id, :degree_id, :region_id, :description, :name, :email, :admin, :public, :phone, :company, :position, :password_digest)
+  end
 end

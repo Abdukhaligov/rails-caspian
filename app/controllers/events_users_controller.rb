@@ -1,4 +1,5 @@
 class EventsUsersController < ApplicationController
+  before_action :authorized
   before_action :set_events_user, only: [:show, :edit, :update, :destroy]
 
   # GET /events_users

@@ -1,4 +1,5 @@
 class RegionsController < ApplicationController
+  before_action :authorized
   before_action :set_region, only: [:show, :edit, :update, :destroy]
 
   # GET /regions
@@ -69,6 +70,6 @@ class RegionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def region_params
-      params.require(:region).permit(:name_en, :desc_en, :name_ru, :desc_ru, :cc, :mask)
+      params.require(:region).permit(:name, :desc, :name_ru, :desc_ru, :cc, :mask)
     end
 end

@@ -1,4 +1,5 @@
 class ReferencesController < ApplicationController
+  before_action :authorized
   before_action :set_reference, only: [:show, :edit, :update, :destroy]
 
   # GET /references

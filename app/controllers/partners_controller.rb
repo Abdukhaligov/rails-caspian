@@ -1,4 +1,5 @@
 class PartnersController < ApplicationController
+  before_action :authorized
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   # GET /partners

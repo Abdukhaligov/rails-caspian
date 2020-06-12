@@ -1,4 +1,5 @@
 class DegreesController < ApplicationController
+  before_action :authorized
   before_action :set_degree, only: [:show, :edit, :update, :destroy]
 
   # GET /degrees

@@ -1,6 +1,8 @@
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
 users = [
-    ["name" => "admin", "email" => "admin@site.com", "password" => BCrypt::Password.create(123456), "admin" => 1, "public" => 0],
-    ["name" => "admin", "email" => "admin@a.a", "password" => BCrypt::Password.create(123456), "admin" => 1, "public" => 0]
+    ["name" => "admin", "email" => "admin@site.com", "password_digest" => BCrypt::Password.create(123456), "admin" => 1, "public" => 0],
+    ["name" => "admin", "email" => "admin@a.a", "password_digest" => BCrypt::Password.create(123456), "admin" => 1, "public" => 0]
 ]
 
 2.times do
@@ -12,7 +14,7 @@ users = [
       "rank" => 1,
       "description" => Faker::Lorem.paragraph,
       "position" => Faker::Job.position,
-      "password" => BCrypt::Password.create(123456),
+      "password_digest" => BCrypt::Password.create(123456),
       "degree_id" => rand(1..4),
       "region_id" => rand(1..295),
       "reference_id" => rand(1..6),
@@ -28,7 +30,7 @@ end
       "rank" => 2,
       "description" => Faker::Lorem.paragraph,
       "position" => Faker::Job.position,
-      "password" => BCrypt::Password.create(123456),
+      "password_digest" => BCrypt::Password.create(123456),
       "degree_id" => rand(1..4),
       "region_id" => 20,
       "reference_id" => rand(1..6),
@@ -44,7 +46,7 @@ end
       "rank" => 3,
       "description" => Faker::Lorem.paragraph,
       "position" => Faker::Job.position,
-      "password" => BCrypt::Password.create(123456),
+      "password_digest" => BCrypt::Password.create(123456),
       "degree_id" => rand(1..4),
       "region_id" => 20,
       "reference_id" => rand(1..6),
@@ -59,7 +61,7 @@ end
       "company" => Faker::Company.name,
       "description" => Faker::Lorem.paragraph,
       "position" => Faker::Job.position,
-      "password" => BCrypt::Password.create(123456),
+      "password_digest" => BCrypt::Password.create(123456),
       "degree_id" => rand(1..4),
       "region_id" => 20,
       "reference_id" => rand(1..6),
@@ -70,3 +72,5 @@ end
 users.each do |user|
   User.create(user)
 end
+
+

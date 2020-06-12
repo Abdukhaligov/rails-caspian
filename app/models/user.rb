@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   belongs_to :reference, optional: true
   belongs_to :degree, optional: true
   belongs_to :region, optional: true
