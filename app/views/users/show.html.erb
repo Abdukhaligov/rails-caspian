@@ -5,12 +5,12 @@
   <%= @user.reference ? @user.reference.name : '' %>
 </p>
 
-<% if defined?(@user.events_users) %>
+<% if defined?(@user.user_memberships) %>
   <p>
     <strong>Events:</strong>
     <br>
-    <% if defined?(@user.events_users) %>
-      <% @user.events_users.each do |event| %>
+    <% if defined?(@user.user_memberships) %>
+      <% @user.user_memberships.each do |event| %>
         Event: <%= event.event.name %>, Membership: <%= event.membership.name %> : (<%= event.status %>)
         <br>
       <% end %>
