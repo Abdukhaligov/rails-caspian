@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  degree: one
+  name: MyString
+  description: MyText
+  company: MyString
+  position: MyString
+
+two:
+  degree: two
+  name: MyString
+  description: MyText
+  company: MyString
+  position: MyString

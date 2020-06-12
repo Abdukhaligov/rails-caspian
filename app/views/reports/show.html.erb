@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @report.user ? @report.user.name : '' %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @report.event ? @report.event.name : '' %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @report.topic ? @report.topic.name : '' %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @report.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @report.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @report.status %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @report.file %>
+</p>
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', reports_path %>

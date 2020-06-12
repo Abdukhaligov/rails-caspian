@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200612052803) do
+ActiveRecord::Schema.define(version: 20200612053741) do
 
   create_table "degrees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -89,6 +89,32 @@ ActiveRecord::Schema.define(version: 20200612052803) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.bigint "topic_id"
+    t.string "name"
+    t.text "description"
+    t.integer "status", limit: 1
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_reports_on_event_id"
+    t.index ["topic_id"], name: "index_reports_on_topic_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
+  create_table "sponsors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "degree_id"
+    t.string "name"
+    t.text "description"
+    t.string "company"
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["degree_id"], name: "index_sponsors_on_degree_id"
+  end
+
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "topic_id"
     t.string "name"
@@ -137,6 +163,10 @@ ActiveRecord::Schema.define(version: 20200612052803) do
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "memberships"
   add_foreign_key "events_users", "users"
+  add_foreign_key "reports", "events"
+  add_foreign_key "reports", "topics"
+  add_foreign_key "reports", "users"
+  add_foreign_key "sponsors", "degrees"
   add_foreign_key "topics", "topics"
   add_foreign_key "users", "degrees"
   add_foreign_key "users", "references"
