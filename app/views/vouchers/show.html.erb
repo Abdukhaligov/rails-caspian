@@ -2,12 +2,12 @@
 
 <p>
   <strong>Event:</strong>
-  <%= @voucher.event %>
+  <%= @voucher.event ? @voucher.event.name : '' %>
 </p>
 
 <p>
   <strong>Membership:</strong>
-  <%= @voucher.membership %>
+  <%= @voucher.membership ? @voucher.membership.name : '' %>
 </p>
 
 <p>

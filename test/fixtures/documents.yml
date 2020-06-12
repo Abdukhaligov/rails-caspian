@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  voucher: one
+  path: MyString
+
+two:
+  user: two
+  voucher: two
+  path: MyString

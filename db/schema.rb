@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200611214901) do
+ActiveRecord::Schema.define(version: 20200612052803) do
 
   create_table "degrees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "voucher_id"
+    t.string "path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_documents_on_user_id"
+    t.index ["voucher_id"], name: "index_documents_on_voucher_id"
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -43,6 +53,21 @@ ActiveRecord::Schema.define(version: 20200611214901) do
   create_table "memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.boolean "reporter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "partners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "url"
+    t.boolean "gold", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -107,6 +132,8 @@ ActiveRecord::Schema.define(version: 20200611214901) do
     t.index ["membership_id"], name: "index_vouchers_on_membership_id"
   end
 
+  add_foreign_key "documents", "users"
+  add_foreign_key "documents", "vouchers"
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "memberships"
   add_foreign_key "events_users", "users"

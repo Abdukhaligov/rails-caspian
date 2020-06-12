@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :partners
+  resources :news
+  resources :documents
   resources :topics
   resources :vouchers
   resources :events_users

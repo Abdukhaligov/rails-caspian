@@ -18,8 +18,8 @@
   <tbody>
     <% @vouchers.each do |voucher| %>
       <tr>
-        <td><%= voucher.event %></td>
-        <td><%= voucher.membership %></td>
+        <td><%= voucher.event ? voucher.event.name : '' %></td>
+        <td><%= voucher.membership ? voucher.membership.name : '' %></td>
         <td><%= voucher.name %></td>
         <td><%= voucher.description %></td>
         <td><%= voucher.template %></td>
