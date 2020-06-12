@@ -1,5 +1,5 @@
 ActiveAdmin.register Report do
 
-  permit_params :list, :of, :attributes, :on, :model
+  permit_params :user_id, :event_id, :topic_id, :name, :description, :status, :file
 
 end

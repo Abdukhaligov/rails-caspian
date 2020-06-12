@@ -1,5 +1,5 @@
 ActiveAdmin.register Topic do
 
-  permit_params :list, :of, :attributes, :on, :model
+  permit_params :topic_id, :name, :description
 
 end

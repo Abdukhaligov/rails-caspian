@@ -1,9 +1,6 @@
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(email: 'admin@example.com', password: '123456', password_confirmation: '123456')
 
-users = [
-    ["name" => "admin", "email" => "admin@site.com", "password_digest" => BCrypt::Password.create(123456), "admin" => 1, "public" => 0],
-    ["name" => "admin", "email" => "admin@a.a", "password_digest" => BCrypt::Password.create(123456), "admin" => 1, "public" => 0]
-]
+users = []
 
 2.times do
   users << [

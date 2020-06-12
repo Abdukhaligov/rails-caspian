@@ -1,5 +1,6 @@
 class Report < ApplicationRecord
-  belongs_to :user
-  belongs_to :event
-  belongs_to :topic
+  belongs_to :user, optional: true
+  belongs_to :event, optional: true
+  belongs_to :topic, optional: true
+  enum :status => {pending: 0, denied: 1, approved: 2}
 end

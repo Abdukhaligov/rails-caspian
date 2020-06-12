@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200612072921) do
+ActiveRecord::Schema.define(version: 20200612122043) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -150,6 +150,18 @@ ActiveRecord::Schema.define(version: 20200612072921) do
     t.index ["topic_id"], name: "index_topics_on_topic_id"
   end
 
+  create_table "user_memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.bigint "membership_id"
+    t.integer "status", limit: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_memberships_on_event_id"
+    t.index ["membership_id"], name: "index_user_memberships_on_membership_id"
+    t.index ["user_id"], name: "index_user_memberships_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "reference_id"
     t.bigint "degree_id"
@@ -194,6 +206,9 @@ ActiveRecord::Schema.define(version: 20200612072921) do
   add_foreign_key "reports", "users"
   add_foreign_key "sponsors", "degrees"
   add_foreign_key "topics", "topics"
+  add_foreign_key "user_memberships", "events"
+  add_foreign_key "user_memberships", "memberships"
+  add_foreign_key "user_memberships", "users"
   add_foreign_key "users", "degrees"
   add_foreign_key "users", "references"
   add_foreign_key "users", "regions"
